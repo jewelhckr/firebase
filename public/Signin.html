@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./bootstrap-5.2.2-dist/css/bootstrap.css">
+        <title>SIGN IN PAGE</title>
+    </head>
+    <body class="" style="background-image: url(./Capture.JPG); background-repeat: no-repeat; background-size: 200vh">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <a class="navbar-brand fs-2" href="#" style="color: #0056D2;">Sapphire</a>
+                <form class="d-flex" role="search">
+                  <!-- <button class="btn p-1 btn-primary me-2" type="submit">Explore</button> -->
+                  <input class="form-control me-2 " type="search" placeholder="Search...">
+                </form>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" >
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle hover-dropdown active " role="button" 
+                        data-bs-toggle="dropdown" aria-expanded="false">Online Banking</a>
+                        <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#"><b>Online Banking</b><br>Explore...</a></li>
+                        <li><a class="dropdown-item" href="#"><b>Online Banking</b><br>Master Track <sup style="font-size: 8px;"><b>TM</b></sup></a></li>
+                        <li><a class="dropdown-item" href="#"><b>Fast and Easy Transfers</b><br>Advance your shopping experience here...</a></li>
+                        </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link active" href="#">Find your New Career</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="#">For Enterprise</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="#">For Students</a></li>
+                        <li class="nav-item d-flex" href="index.html">
+                            <a class="nav-link active" style="color: blue;">Sign Up</a>
+                        <button class="btn btn-info text-light">Home</button>
+                    </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="row container-fluid bg-primary bg-opacity-10 form-control w-50 mt-4 mx-auto shadow-lg">
+            <div class="col-10 col-lg-10 mx-auto">
+                <h1 class="text-primary fw-bold text-center"> 
+                    SAPPHIRE BANKING
+                </h1>
+                <h1 class="h3 text-center">
+                    Log In Page
+                </h1>
+                <input type="text" placeholder="Enter your Username..." id="fn" class="my-2 mx-auto form-control">
+                <input type="password" placeholder="Enter your Password..." id="pass" class="my-2 mx-auto form-control">
+                <button class="btn btn-info w-100 my-2 mx-auto" onclick="logIn()">Log In</button>
+                <p>Don't have an account? <a href="index.html">Sign-Up</a></p>
+            </div>
+        </div>
+
+        <script>
+            var allUsers = JSON.parse(localStorage.getItem
+            ('localUsers'))
+            var userIndex = localStorage.getItem('currentUserIndex')
+            console.log(allUsers[userIndex])
+
+            function logIn(){
+                var userInfo = fn.value
+                var userPassword = pass.value
+                var found = false
+                for (let index = 0; index < allUsers.length; index++) { 
+                    if(allUsers[index].userName==userInfo && allUsers[index].password==userPassword){
+                        localStorage.setItem('currentUserIndex',index)
+                        found = true
+                        break; // To stop the for-loop
+                    }
+                }
+                if(found==true){
+                    alert("Correct")
+                } else{
+                    alert("Incorrect Details")
+                }
+                window.location.href = "Dashboard.html"
+            }
+ 
+        </script>
+    </body>
+</html>
